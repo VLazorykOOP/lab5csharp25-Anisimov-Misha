@@ -1,5 +1,4 @@
 using System;
-
 class Program
 {
     static void Main()
@@ -10,17 +9,14 @@ class Program
             ("Петренко", "Петро", "Петрович", 2001, new int[] { 90, 80, 85 }, 4.5),
             ("Сидоренко", "Сидір", "Сидорович", 2002, new int[] { 85, 80, 90 }, 4.6)
         };
-
         // Видалення елемента
         Console.WriteLine("Введіть номер елемента для видалення (0, 1, 2): ");
         int indexToDelete = int.Parse(Console.ReadLine());
         abiturients = RemoveAbiturient(abiturients, indexToDelete);
-
         // Додавання елемента після прізвища
         Console.WriteLine("Введіть прізвище для додавання нового абітурієнта після: ");
         string lastNameToAddAfter = Console.ReadLine();
         abiturients = AddAbiturientAfterLastName(abiturients, lastNameToAddAfter, ("Новак", "Олександр", "Олександрович", 2000, new int[] { 95, 88, 92 }, 4.7));
-
         // Виведення абітурієнтів
         foreach (var abiturient in abiturients)
         {
@@ -30,7 +26,6 @@ class Program
             Console.WriteLine($"Середній бал атестата: {abiturient.AverageGrade}\n");
         }
     }
-
     static (string LastName, string FirstName, string Patronymic, int BirthYear, int[] ExamScores, double AverageGrade)[] RemoveAbiturient((string LastName, string FirstName, string Patronymic, int BirthYear, int[] ExamScores, double AverageGrade)[] abiturients, int index)
     {
         if (index < 0 || index >= abiturients.Length) return abiturients;
@@ -41,7 +36,6 @@ class Program
         }
         return newAbiturients;
     }
-
     static (string LastName, string FirstName, string Patronymic, int BirthYear, int[] ExamScores, double AverageGrade)[] AddAbiturientAfterLastName((string LastName, string FirstName, string Patronymic, int BirthYear, int[] ExamScores, double AverageGrade)[] abiturients, string lastName, (string LastName, string FirstName, string Patronymic, int BirthYear, int[] ExamScores, double AverageGrade) newAbiturient)
     {
         int index = Array.FindIndex(abiturients, a => a.LastName == lastName);
